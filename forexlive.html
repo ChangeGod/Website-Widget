@@ -2,19 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RSS Feed Widget</title>
+  <title>ForexLive RSS Widget with Scroll</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Trang không cuộn */
+      background-color: #2e2e2e;
+    }
+
+    #widgetmain {
+      width: 200px;
+      margin: 20px auto;
+      border: 5px solid #444444;
+      background-color: #575353;
+    }
+
+    #rsswidget {
+      height: 500px;
+    }
+
+    iframe {
+      width: 200px;
+      height: 500px;
+      border: none;
+      overflow: auto; /* Cho phép iframe cuộn */
+      display: block;
+    }
+
+    #widgetbottom {
+      text-align: right;
+      border-top: 5px solid #444444;
+      padding: 5px;
+    }
+
+    #widgetbottom a {
+      font-size: 70%;
+      color: #cccccc;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <div id="widgetmain" style="text-align:left;overflow-y:auto;overflow-x:hidden;width:200px;background-color:#575353; border:5px solid #444444;">
-    <div id="rsswidget" style="height:500px;">
-      <iframe src="https://www.rssfeedwidget.com/getrss.php?time=1744531937555&amp;x=https%3A%2F%2Fwww.forexlive.com%2Ffeed%2Fnews&amp;w=200&amp;h=500&amp;bc=444444&amp;bw=5&amp;bgc=575353&amp;m=50&amp;it=true&amp;t=(default)&amp;tc=4FC3F7&amp;ts=20&amp;tb=transparent&amp;il=true&amp;lc=E0E0E0&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=103233&amp;ds=14&amp;idt=true&amp;dtc=CCCCCC&amp;dts=12" border="0" hspace="0" vspace="0" frameborder="no" marginwidth="0" marginheight="0" style="border:0; padding:0; margin:0; width:500px; height:900px;" id="rssOutput">
-        Reading RSS Feed ...
+  <div id="widgetmain">
+    <div id="rsswidget">
+      <iframe 
+        src="https://www.rssfeedwidget.com/getrss.php?time=1744531937555&amp;x=https%3A%2F%2Fwww.forexlive.com%2Ffeed%2Fnews&amp;w=200&amp;h=900&amp;bc=444444&amp;bw=5&amp;bgc=575353&amp;m=50&amp;it=true&amp;t=(default)&amp;tc=4FC3F7&amp;ts=20&amp;tb=transparent&amp;il=true&amp;lc=E0E0E0&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=103233&amp;ds=14&amp;idt=true&amp;dtc=CCCCCC&amp;dts=12" 
+        scrolling="yes"
+        id="rssOutput">
       </iframe>
     </div>
-    <div style="text-align:right;margin-bottom:0;border-top:5px solid #444444;" id="widgetbottom">
-      <span style="font-size:70%">
-        <a href="https://www.rssfeedwidget.com">rss feed widget</a>&nbsp;
-      </span><br>
+    <div id="widgetbottom">
+      <a href="https://www.rssfeedwidget.com" target="_blank">rss feed widget</a>
     </div>
   </div>
 </body>
