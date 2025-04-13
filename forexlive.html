@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ForexLive RSS Widget with Scroll</title>
+  <title>Mini Scrollbar RSS Widget</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Trang không cuộn */
+      overflow: hidden;
       background-color: #2e2e2e;
     }
 
@@ -18,15 +18,28 @@
       background-color: #575353;
     }
 
-    #rsswidget {
+    #scrollbox {
       height: 500px;
+      overflow-y: scroll;
+    }
+
+    #scrollbox::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #scrollbox::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 6px;
+    }
+
+    #scrollbox::-webkit-scrollbar-track {
+      background: transparent;
     }
 
     iframe {
       width: 200px;
-      height: 500px;
+      height: 900px; /* lớn hơn khung ngoài để scrollbar xuất hiện */
       border: none;
-      overflow: auto; /* Cho phép iframe cuộn */
       display: block;
     }
 
@@ -45,10 +58,10 @@
 </head>
 <body>
   <div id="widgetmain">
-    <div id="rsswidget">
+    <div id="scrollbox">
       <iframe 
-        src="https://www.rssfeedwidget.com/getrss.php?time=1744531937555&amp;x=https%3A%2F%2Fwww.forexlive.com%2Ffeed%2Fnews&amp;w=200&amp;h=900&amp;bc=444444&amp;bw=5&amp;bgc=575353&amp;m=50&amp;it=true&amp;t=(default)&amp;tc=4FC3F7&amp;ts=20&amp;tb=transparent&amp;il=true&amp;lc=E0E0E0&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=103233&amp;ds=14&amp;idt=true&amp;dtc=CCCCCC&amp;dts=12" 
-        scrolling="yes"
+        src="https://www.rssfeedwidget.com/getrss.php?time=1744531937555&amp;x=https%3A%2F%2Fwww.forexlive.com%2Ffeed%2Fnews&amp;w=200&amp;h=900&amp;bc=444444&amp;bw=5&amp;bgc=575353&amp;m=50&amp;it=true&amp;t=(default)&amp;tc=4FC3F7&amp;ts=20&amp;tb=transparent&amp;il=true&amp;lc=E0E0E0&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=103233&amp;ds=14&amp;idt=true&amp;dtc=CCCCCC&amp;dts=12"
+        scrolling="no"
         id="rssOutput">
       </iframe>
     </div>
