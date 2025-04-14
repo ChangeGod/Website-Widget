@@ -2,59 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ForexLive RSS Widget with Scroll</title>
+  <title>Custom RSS Widget</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      overflow: hidden; /* Tuỳ chọn: chặn cuộn dọc nếu muốn */
-      background-color: #2e2e2e;
+      padding: 10px;
+      background-color: transparent;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #d1d4dc;
     }
 
-    #widgetmain {
-      width: 200px;
-      margin: 20px auto;
-      border: 5px solid #444444;
-      background-color: #575353;
-    }
-
-    #rsswidget {
-      height: 500px;
-    }
-
-    iframe {
-      width: 200px;
-      height: 500px;
-      border: none;
-      overflow: auto; /* Cho phép iframe cuộn */
-      display: block;
-    }
-
-    #widgetbottom {
-      text-align: right;
-      border-top: 5px solid #444444;
-      padding: 5px;
-    }
-
-    #widgetbottom a {
-      font-size: 70%;
-      color: #cccccc;
+    a {
+      color: #4FC3F7;
       text-decoration: none;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    .rss-item {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #55555555;
+    }
+
+    .rss-title {
+      font-weight: bold;
+    }
+
+    .rss-date {
+      font-size: 12px;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <div id="widgetmain">
-    <div id="rsswidget">
-      <iframe 
-        src="https://www.rssfeedwidget.com/getrss.php?time=1744531937555&amp;x=https%3A%2F%2Fwww.forexlive.com%2Ffeed%2Fnews&amp;w=200&amp;h=900&amp;bc=444444&amp;bw=5&amp;bgc=575353&amp;m=50&amp;it=true&amp;t=(default)&amp;tc=4FC3F7&amp;ts=20&amp;tb=transparent&amp;il=true&amp;lc=E0E0E0&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=103233&amp;ds=14&amp;idt=true&amp;dtc=CCCCCC&amp;dts=12" 
-        scrolling="yes"
-        id="rssOutput">
-      </iframe>
-    </div>
-    <div id="widgetbottom">
-      <a href="https://www.rssfeedwidget.com" target="_blank">rss feed widget</a>
-    </div>
-  </div>
+  <div id="rss-container">Loading...</div>
+
+  <script>
+    async function fetchRSS() {
+      const rssUrl = "https://www.forexlive.com/feed/news";
+      const proxy = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl);
+
+      const response = await fetch(proxy);
+      const data = await response.json();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(data.contents, "text/xml");
+      const items = xml.querySelectorAll("item");
+
+      const container = document.getElementById("rss-container");
+      container.innerHTML = "";
+
+      items.forEach((item, i) => {
+        if (i >= 10) return; // Giới hạn 10 bài
+
+        const title = item.querySelector("title").textContent;
+        const link = item.querySelector("link").textContent;
+        const pubDate = item.querySelector("pubDate")?.textContent || "";
+
+        const el = document.createElement("div");
+        el.className = "rss-item";
+        el.innerHTML = `
+          <div class="rss-title"><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></div>
+          <div class="rss-date">${new Date(pubDate).toLocaleString()}</div>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    fetchRSS();
+  </script>
 </body>
 </html>
