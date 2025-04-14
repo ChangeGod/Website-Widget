@@ -37,12 +37,11 @@
       background: transparent;
     }
 
-    iframe {
-      width: 200px;
-      height: 900px;
-      border: none;
-      display: block;
-      background-color: transparent;
+    #bloople_rss {
+      background-color: transparent !important;
+      color: #4FC3F7 !important;
+      font-size: 16px !important;
+      line-height: 1.5;
     }
 
     #widgetbottom {
@@ -61,15 +60,8 @@
 <body>
   <div id="widgetmain">
     <div id="scrollbox">
-      <iframe 
-        src="https://rss-bridge.org/bridge01/?action=display&bridge=FeedMergeBridge&feed_name=Substack&feed_1=https%3A%2F%2Fviethustler.substack.com%2Ffeed&feed_2=https%3A%2F%2Fhoquoctuan.substack.com%2Ffeed&feed_3=https%3A%2F%2Fwww.readtrung.com%2Ffeed&format=Atom"
-        scrolling="yes"
-        allowtransparency="true"
-        id="rssOutput">
-      </iframe>
-    </div>
-    <div id="widgetbottom">
-      <a href="https://rss-bridge.org" target="_blank">powered by RSS-Bridge</a>
+      <div id="bloople_rss"></div>
+      <script src="//rss.bloople.net/?url=https%3A%2F%2Frss-bridge.org%2Fbridge01%2F%3Faction%3Ddisplay%26bridge%3DFeedMergeBridge%26feed_name%3DSubstack%26feed_1%3Dhttps%253A%252F%252Fviethustler.substack.com%252Ffeed%26feed_2%3Dhttps%253A%252F%252Fhoquoctuan.substack.com%252Ffeed%26feed_3%3Dhttps%253A%252F%252Fwww.readtrung.com%252Ffeed%26limit%3D%26format%3DAtom&showtitle=false&type=js"></script>
     </div>
   </div>
 </body>
