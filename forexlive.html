@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mini Scrollbar RSS Widget</title>
+  <title>TradingView Style RSS Widget</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: #2e2e2e;
+      background-color: #131722; /* Nền giống TradingView */
+      font-family: Arial, sans-serif;
     }
 
     #widgetmain {
       width: 200px;
       margin: 20px auto;
-      border: 5px solid #444444;
-      background-color: #575353;
+      border: 1px solid #222631;
+      background-color: #1E1E1E;
     }
 
     #scrollbox {
@@ -24,34 +25,34 @@
     }
 
     #scrollbox::-webkit-scrollbar {
-      width: 1px;
+      width: 4px;
     }
 
     #scrollbox::-webkit-scrollbar-thumb {
-      background-color: #888;
-      border-radius: 1px;
+      background-color: #3E4A5A;
+      border-radius: 3px;
     }
 
     #scrollbox::-webkit-scrollbar-track {
-      background: transparent;
+      background: #1A1D26;
     }
 
     iframe {
       width: 200px;
-      height: 900px; /* lớn hơn khung ngoài để scrollbar xuất hiện */
+      height: 900px;
       border: none;
       display: block;
     }
 
     #widgetbottom {
       text-align: right;
-      border-top: 5px solid #444444;
+      border-top: 1px solid #222631;
       padding: 5px;
     }
 
     #widgetbottom a {
       font-size: 70%;
-      color: #cccccc;
+      color: #2962FF;
       text-decoration: none;
     }
   </style>
@@ -60,7 +61,7 @@
   <div id="widgetmain">
     <div id="scrollbox">
       <iframe 
-        src="https://www.rssfeedwidget.com/getrss.php?time=1744531937555&amp;x=https%3A%2F%2Fwww.forexlive.com%2Ffeed%2Fnews&amp;w=200&amp;h=900&amp;bc=444444&amp;bw=5&amp;bgc=575353&amp;m=50&amp;it=true&amp;t=(default)&amp;tc=4FC3F7&amp;ts=20&amp;tb=transparent&amp;il=true&amp;lc=E0E0E0&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=103233&amp;ds=14&amp;idt=true&amp;dtc=CCCCCC&amp;dts=12"
+        src="https://www.rssfeedwidget.com/getrss.php?time=1744531937555&amp;x=https%3A%2F%2Fwww.forexlive.com%2Ffeed%2Fnews&amp;w=200&amp;h=900&amp;bc=222631&amp;bw=1&amp;bgc=1E1E1E&amp;m=50&amp;it=true&amp;t=(default)&amp;tc=d1d4dc&amp;ts=16&amp;tb=transparent&amp;il=true&amp;lc=2962FF&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=222631&amp;ds=14&amp;idt=true&amp;dtc=6A7895&amp;dts=12"
         scrolling="yes"
         id="rssOutput">
       </iframe>
