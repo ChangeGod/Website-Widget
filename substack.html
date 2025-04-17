@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="180">
-  <title>Substack RSS Widget for Notion</title>
+  <title>Transparent RSS Widget for Notion</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: transparent;
+      background-color: transparent; /* <-- nền trong suốt */
       font-family: Arial, sans-serif;
     }
 
     #widgetmain {
       width: 200px;
       margin: 0 auto;
-      border: none;
-      background-color: transparent;
+      border: none; /* bỏ border nếu không muốn viền */
+      background-color: transparent; /* <-- nền trong suốt */
     }
 
     #scrollbox {
@@ -38,12 +37,12 @@
       background: transparent;
     }
 
-    #rssOutput {
+    iframe {
       width: 200px;
       height: 900px;
       border: none;
       display: block;
-      background-color: transparent;
+      background-color: transparent; /* đề phòng iframe bị nền mặc định */
     }
 
     #widgetbottom {
@@ -57,41 +56,16 @@
       color: #2962FF;
       text-decoration: none;
     }
-
-    /* Điều chỉnh CSS để định dạng nội dung từ rss.bloople.net */
-    #rssOutput * {
-      background-color: transparent !important;
-    }
-
-    #rssOutput a {
-      color: #d1d4dc !important; /* Màu liên kết (lc=d1d4dc) */
-      font-size: 14px !important; /* Kích thước chữ liên kết (ls=14) */
-      text-decoration: none !important;
-    }
-
-    #rssOutput a.title {
-      color: #4FC3F7 !important; /* Màu tiêu đề (tc=4FC3F7) */
-      font-size: 16px !important; /* Kích thước tiêu đề (ts=16) */
-      font-weight: bold !important;
-    }
-
-    #rssOutput .desc {
-      color: #000000 !important; /* Màu mô tả (dc=00000000) */
-      font-size: 14px !important; /* Kích thước mô tả (ds=14) */
-    }
-
-    #rssOutput .date {
-      color: #6A7895 !important; /* Màu ngày (dtc=6A7895) */
-      font-size: 12px !important; /* Kích thước ngày (dts=12) */
-    }
   </style>
 </head>
 <body>
   <div id="widgetmain">
     <div id="scrollbox">
-      <div id="rssOutput">
-        <script src="//rss.bloople.net/?url=https%3A%2F%2Frss-bridge.org%2Fbridge01%2F%3Faction%3Ddisplay%26bridge%3DFeedMergeBridge%26feed_name%3DSubstack%26feed_1%3Dhttps%253A%252F%252Fviethustler.substack.com%252Ffeed%26feed_2%3Dhttps%253A%252F%252Fhoquoctuan.substack.com%252Ffeed%26feed_3%3Dhttps%253A%252F%252Fwww.readtrung.com%252Ffeed%26feed_4%3D%26feed_5%3D%26feed_6%3D%26feed_7%3D%26feed_8%3D%26feed_9%3D%26feed_10%3D%26limit%3D%26format%3DAtom&detail=-1&limit=50&showtitle=false&type=js"></script>
-      </div>
+      <iframe 
+        src="https://www.rssfeedwidget.com/getrss.php?time=1744880433806&amp;x=https%3A%2F%2Ffeeds.feedburner.com%2Frss-bridge%2Fd2236kgsae9&amp;w=200&amp;h=900&amp;bc=00000000&amp;bw=0&amp;bgc=transparent&amp;m=100&amp;it=true&amp;t=(default)&amp;tc=4FC3F7&amp;ts=16&amp;tb=transparent&amp;il=true&amp;lc=d1d4dc&amp;ls=14&amp;lb=true&amp;id=false&amp;dc=00000000&amp;ds=14&amp;idt=true&amp;dtc=6A7895&amp;dts=12"
+        scrolling="yes"
+        allowtransparency="true"
+        id="rssOutput">
     </div>
   </div>
 </body>
