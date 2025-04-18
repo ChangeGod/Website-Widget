@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Time Ticker</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #0d1117; /* dark background (matches GitHub dark) */
+      color: #e6edf3;      /* light text */
+    }
+
+    .a-global-time__wrapper {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      background: #161b22; /* card background */
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .a-global-time__single-time {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 70px;
+    }
+
+    .a-global-time__time-label {
+      font-weight: bold;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .a-global-time__time-value {
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+  <div class="a-global-time__wrapper">
+    <div class="a-global-time__single-time">
+      <span class="a-global-time__time-label">GMT</span>
+      <span class="a-global-time__time-value" id="gmt">--:--:--</span>
+    </div>
+    <div class="a-global-time__single-time">
+      <span class="a-global-time__time-label">LON</span>
+      <span class="a-global-time__time-value" id="lon">--:--:--</span>
+    </div>
+    <div class="a-global-time__single-time">
+      <span class="a-global-time__time-label">NY</span>
+      <span class="a-global-time__time-value" id="ny">--:--:--</span>
+    </div>
+    <div class="a-global-time__single-time">
+      <span class="a-global-time__time-label">TKYO</span>
+      <span class="a-global-time__time-value" id="tokyo">--:--:--</span>
+    </div>
+    <div class="a-global-time__single-time">
+      <span class="a-global-time__time-label">SYD</span>
+      <span class="a-global-time__time-value" id="syd">--:--:--</span>
+    </div>
+  </div>
+
+  <script>
+    const formatOptions = { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
+
+    function updateTimes() {
+      const now = new Date();
+
+      document.getElementById("gmt").textContent   = now.toLocaleTimeString("en-GB", { ...formatOptions, timeZone: "UTC" });
+      document.getElementById("lon").textContent   = now.toLocaleTimeString("en-GB", { ...formatOptions, timeZone: "Europe/London" });
+      document.getElementById("ny").textContent    = now.toLocaleTimeString("en-US", { ...formatOptions, timeZone: "America/New_York" });
+      document.getElementById("tokyo").textContent = now.toLocaleTimeString("en-JP", { ...formatOptions, timeZone: "Asia/Tokyo" });
+      document.getElementById("syd").textContent   = now.toLocaleTimeString("en-AU", { ...formatOptions, timeZone: "Australia/Sydney" });
+    }
+
+    // Initial paint
+    updateTimes();
+    // Update every second
+    setInterval(updateTimes, 1000);
+  </script>
+</body>
+</html>
